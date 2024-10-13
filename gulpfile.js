@@ -4,7 +4,7 @@ const htmlMin = require('gulp-htmlmin');
 const autoprefixes = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const svgSprite = require('gulp-svg-sprite');
-const image = require('gulp-webp');
+const image = require('gulp-image');
 const uglify = require('gulp-uglify-es').default;
 const babel = require('gulp-babel');
 const notify = require('gulp-notify');
@@ -63,16 +63,16 @@ const svgSprites = () => {
         .pipe(dest(dist+'/images'))
 }
 
-// const images = () => {
-//     return src([
-//         'src/images/**/*.jpg',
-//         'src/images/**/*.png',
-//         'src/images/**/*.jpeg',
-//         'src/images/*.svg',
-//     ])        
-//         .pipe(image())
-//         .pipe(dest(dist+'/images'))
-// }
+const images = () => {
+    return src([
+        'src/images/**/*.jpg',
+        'src/images/**/*.png',
+        'src/images/**/*.jpeg',
+        'src/images/*.svg',
+    ], ({encoding: false}))        
+        .pipe(image())
+        .pipe(dest(dist+'/images'))
+}
 
 const images = () => {
     return src('src/images/**/*.{jpg,png}')
